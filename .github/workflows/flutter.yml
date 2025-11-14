@@ -42,11 +42,23 @@ jobs:
          Start-Process appium -ArgumentList "--port 4723"
         shell: pwsh
 
-      # Download shop.exe
-      - name: Download shop.exe
+      # Create directory (optional)
+      - name: Prepare app folder
         run: |
-          mkdir C:\apps
-          curl -L "https://your-server.com/shop.exe" -o "C:\apps\shop.exe"
+         mkdir C:\apps
+        shell: pwsh
+
+# Copy shop.exe from repo
+      - name: Copy shop.exe from repo
+        run: |
+         Copy-Item "${{ github.workspace }}\release\shop.exe" "C:\apps\shop.exe"
+        shell: pwsh
+
+# Start the Flutter desktop app
+      - name: Launch Shop App
+        run: |
+         Start-Process "C:\apps\shop.exe"
+        shell: pwsh
 
       # Launch your Flutter desktop app
       - name: Launch Shop App
