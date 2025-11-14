@@ -16,15 +16,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Install Flutter
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: "3.22.0"
-          channel: "stable"
-
-      - name: Flutter Doctor
-        run: flutter doctor -v
 
       # Install Node.js (For Appium)
       - name: Setup Node
@@ -38,11 +29,6 @@ jobs:
           npm install -g appium
           npm install -g appium-windows-driver
 
-      # Install WebdriverIO (if you're using WDIO)
-      - name: Install WebdriverIO Dependencies
-        run: |
-          npm install
-        working-directory: ./tests
 
       # Start WinAppDriver
       - name: Start WinAppDriver
@@ -73,17 +59,7 @@ jobs:
         run: Start-Sleep -Seconds 10
         shell: pwsh
 
-      # Run your test automation (pick your type)
-      # If WDIO:
-      - name: Run WDIO Tests
-        run: |
-          npx wdio run wdio.conf.js
-        working-directory: ./tests
-
-      # If Dart test runner:
-      # - name: Run Dart Tests
-      #   run: dart test
 
       # If Java/TestNG:
-      # - name: Run Java Tests
-      #   run: mvn test
+      - name: Run Java Tests
+        run: mvn test
