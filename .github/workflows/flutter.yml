@@ -39,7 +39,7 @@ jobs:
       # Start Appium server
       - name: Start Appium Server
         run: |
-          Start-Process appium --port 4723
+         Start-Process appium -ArgumentList "--port 4723"
         shell: pwsh
 
       # Download shop.exe
