@@ -33,7 +33,7 @@ jobs:
       # Start WinAppDriver
       - name: Start WinAppDriver
         run: |
-          Start-Process "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"
+          Start-Process "./WinAppDriver.exe"
         shell: pwsh
 
       # Start Appium server
