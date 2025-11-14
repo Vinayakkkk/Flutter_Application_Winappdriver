@@ -1,0 +1,1 @@
+[2025-11-05 12:22:26.122] [INFO] Window focused by clicking 'Welcome back!'

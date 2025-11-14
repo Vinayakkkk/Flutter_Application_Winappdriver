@@ -1,0 +1,1 @@
+[2025-11-05 12:48:51.950] [INFO] Application window maximized

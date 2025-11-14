@@ -1,0 +1,1 @@
+[2025-11-05 12:22:29.884] [INFO] Starting successful login test with email: user1234@gmail.com

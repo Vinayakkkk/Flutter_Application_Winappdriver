@@ -1,0 +1,1 @@
+[2025-11-05 12:49:09.673] [INFO] Clicked on Login button

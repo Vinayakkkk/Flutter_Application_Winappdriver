@@ -1,0 +1,1 @@
+[2025-11-05 12:49:09.974] [INFO] Application closed successfully

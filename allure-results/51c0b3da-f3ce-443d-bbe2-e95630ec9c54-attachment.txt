@@ -1,0 +1,1 @@
+[2025-11-05 12:22:17.470] [INFO] App Path: C:\Users\Vinayak R Hanagi\Documents\Release\shop.exe

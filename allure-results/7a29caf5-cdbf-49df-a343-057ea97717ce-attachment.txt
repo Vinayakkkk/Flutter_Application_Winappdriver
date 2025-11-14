@@ -1,0 +1,1 @@
+[2025-11-05 12:22:20.201] [INFO] Windows Driver initialized successfully

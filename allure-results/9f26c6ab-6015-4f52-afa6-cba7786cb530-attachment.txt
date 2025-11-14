@@ -1,0 +1,1 @@
+[2025-11-05 12:48:51.967] [INFO] Windows Driver initialized successfully with timeouts - Implicit: 10s, Explicit: 20s

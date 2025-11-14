@@ -1,0 +1,1 @@
+[2025-11-05 12:48:52.341] [INFO] Swiping element from X:200 to X:-200
