@@ -9,7 +9,7 @@ on:
 
 jobs:
   run-desktop-automation:
-    runs-on: windows-latest
+    runs-on: self-hosted
 
     steps:
       # Checkout code
