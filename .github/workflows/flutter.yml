@@ -1,0 +1,89 @@
+name: Flutter Desktop Automation (Windows)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  run-desktop-automation:
+    runs-on: windows-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Install Flutter
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.0"
+          channel: "stable"
+
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      # Install Node.js (For Appium)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Install Appium
+      - name: Install Appium
+        run: |
+          npm install -g appium
+          npm install -g appium-windows-driver
+
+      # Install WebdriverIO (if you're using WDIO)
+      - name: Install WebdriverIO Dependencies
+        run: |
+          npm install
+        working-directory: ./tests
+
+      # Start WinAppDriver
+      - name: Start WinAppDriver
+        run: |
+          Start-Process "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"
+        shell: pwsh
+
+      # Start Appium server
+      - name: Start Appium Server
+        run: |
+          Start-Process appium --port 4723
+        shell: pwsh
+
+      # Download shop.exe
+      - name: Download shop.exe
+        run: |
+          mkdir C:\apps
+          curl -L "https://your-server.com/shop.exe" -o "C:\apps\shop.exe"
+
+      # Launch your Flutter desktop app
+      - name: Launch Shop App
+        run: |
+          Start-Process "C:\apps\shop.exe"
+        shell: pwsh
+
+      # Wait for the app to launch
+      - name: Wait for app to load
+        run: Start-Sleep -Seconds 10
+        shell: pwsh
+
+      # Run your test automation (pick your type)
+      # If WDIO:
+      - name: Run WDIO Tests
+        run: |
+          npx wdio run wdio.conf.js
+        working-directory: ./tests
+
+      # If Dart test runner:
+      # - name: Run Dart Tests
+      #   run: dart test
+
+      # If Java/TestNG:
+      # - name: Run Java Tests
+      #   run: mvn test
